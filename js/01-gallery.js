@@ -36,12 +36,15 @@ function openModal(event) {
     const modal = basicLightbox.create(`<img src="${largeImage}">`);
     /**** Відкриваю модальнре вікно, методами бібліотеки basicLightbox*/
     modal.show();
-    /**** Функція закриття модального вікна по клавіші Escape*/
-    const handleKeyDown = (event) => {
-        if (event.code === 'Escape') {
-            modal.close();
-        }
-    };
-    /**** Додаю слухач на клавішу клавіатури*/
+     /**** Додаю слухач на клавішу клавіатури*/
     document.addEventListener('keydown', handleKeyDown);
+    /**** Колбек функція закриття модального вікна по клавіші Escape*/
+    const handleKeyDown = (event) => {
+        if (event.code !== 'Escape') {
+            return; 
+        }
+        modal.close();
+        document.removeEventListener('keydown', handleKeyDown);
+    };
+   
 }
