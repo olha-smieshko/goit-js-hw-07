@@ -36,8 +36,7 @@ function openModal(event) {
     const modal = basicLightbox.create(`<img src="${largeImage}">`);
     /**** Відкриваю модальнре вікно, методами бібліотеки basicLightbox*/
     modal.show();
-     /**** Додаю слухач на клавішу клавіатури*/
-    document.addEventListener('keydown', handleKeyDown);
+     
     /**** Колбек функція закриття модального вікна по клавіші Escape*/
     const handleKeyDown = (event) => {
         if (event.code !== 'Escape') {
@@ -46,5 +45,6 @@ function openModal(event) {
         modal.close();
         document.removeEventListener('keydown', handleKeyDown);
     };
-   
+   /**** Додаю слухач на клавішу клавіатури*/
+    document.addEventListener('keydown', handleKeyDown);
 }
